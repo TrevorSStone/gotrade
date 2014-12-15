@@ -1,0 +1,57 @@
+{
+  "quoteResponse": {
+    "quoteData": {
+      "all": {
+        "adjNonAdjFlag": false,
+        "annualDividend": 0,
+        "ask": 0,
+        "askExchange": "Y",
+        "askSize": 0,
+        "askTime": "00:00:00 EDT 03-15-2011",
+        "bid": 0,
+        "bidExchange": "Q",
+        "bidSize": 0,
+        "bidTime": "00:00:00 EDT 03-15-2011",
+        "chgClose": 0.92999999999995,
+        "chgClosePrcn": 0.16,
+        "companyName": "GOOGLE INC",
+        "daysToExpiration": 0,
+        "dirLast": "D",
+        "dividend": 0,
+        "eps": 24.63,
+        "estEarnings": 34.524,
+        "exDivDate": "",
+        "exchgLastTrade": "NASDAQ",
+        "fsi": "N",
+        "high": 0,
+        "high52": 642.96,
+        "highAsk": 0,
+        "highBid": 0,
+        "lastTrade": 570.92,
+        "low": 0,
+        "low52": 433.63,
+        "lowAsk": 0,
+        "lowBid": 0,
+        "numTrades": 0,
+        "open": 0,
+        "openInterest": 0,
+        "optionStyle": "",
+        "optionUnderlier": "",
+        "prevClose": 569.99,
+        "prevDayVolume": 2813969,
+        "primaryExchange": "Q",
+        "symbolDesc": "GOOGLE INC",
+        "todayClose": 570.92,
+        "totalVolume": 0,
+        "upc": 0,
+        "volume10Day": 2718247
+      },
+      "dateTime": "15:15:43 EDT 03-15-2011",
+      "product": {
+        "symbol": "GOOG",
+        "type": "EQ",
+        "exchange": "Q"
+      }
+    }
+  }
+}

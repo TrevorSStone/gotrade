@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strings"
 
 	"github.com/mrjones/oauth"
 )
@@ -20,6 +21,13 @@ type ETradeClient struct {
 	consumer    *oauth.Consumer
 	accessToken *oauth.AccessToken
 	url         string
+}
+
+type strURLParameter []string
+
+// Creates a comma separated string
+func (q strURLParameter) String() string {
+	return strings.Join(q, ",")
 }
 
 type IntDollar int64
@@ -56,6 +64,7 @@ func New(consumerID, consumerSecret string) (client ETradeClient, err error) {
 	if err != nil {
 		return client, err
 	}
+
 	client.consumer = c
 	client.accessToken = accessToken
 	client.url = baseURL

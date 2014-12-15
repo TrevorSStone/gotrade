@@ -58,9 +58,9 @@ type AccountCashBalance struct {
 }
 
 const (
-	accountsUrlPath       = "accounts"
-	accountListUrlPath    = "accountlist"
-	accountBalanceUrlPath = "accountbalance"
+	accountsURLPath       = "accounts"
+	accountListURLPath    = "accountlist"
+	accountBalanceURLPath = "accountbalance"
 )
 
 type accountListResponse struct {
@@ -79,7 +79,7 @@ type accountRaw struct {
 }
 
 func (client ETradeClient) ListAccounts() (accounts []Account, raw string, err error) {
-	url := fmt.Sprintf(client.url, accountsUrlPath, accountListUrlPath) + jsonURL
+	url := fmt.Sprintf(client.url, accountsURLPath, accountListURLPath) + jsonURL
 	var response accountListResponse
 	raw, err = client.requestAndUnmarshal(url, &response)
 	if err != nil {
@@ -107,7 +107,7 @@ func (rawAccountListResponse accountListResponse) convert() (accounts []Account,
 }
 
 func (client ETradeClient) AccountBalance(accountID int) (raw string, err error) {
-	url := fmt.Sprintf(client.url, accountsUrlPath, accountBalanceUrlPath)
+	url := fmt.Sprintf(client.url, accountsURLPath, accountBalanceURLPath)
 	url = url + fmt.Sprintf("/%d%s", accountID, jsonURL)
 	fmt.Println(url)
 	raw, err = client.requestAndUnmarshal(url, nil)
