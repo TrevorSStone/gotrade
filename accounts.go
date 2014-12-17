@@ -1,12 +1,6 @@
 package gotrade
 
-import (
-	"errors"
-	"fmt"
-	"math"
-	"strconv"
-	"strings"
-)
+import "fmt"
 
 type Account struct {
 	Description      string
@@ -114,25 +108,6 @@ func (client ETradeClient) AccountBalance(accountID int) (raw string, err error)
 	fmt.Println(raw)
 	if err != nil {
 		return raw, err
-	}
-	return
-}
-
-func convertToIntDollar(v interface{}) (i IntDollar, err error) {
-	switch v := v.(type) {
-	default:
-		return i, errors.New("Unexpected type in response for Value")
-	case float32:
-		i = IntDollar(math.Floor((float64(v) * 100) + .5))
-	case string:
-		v = strings.Replace(v, ".", "", -1)
-		value, err := strconv.ParseInt(v, 10, 64)
-		if err != nil {
-			return i, err
-		}
-		i = IntDollar(value)
-	case float64:
-		i = IntDollar(math.Floor((v * 100) + .5))
 	}
 	return
 }

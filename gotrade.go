@@ -5,7 +5,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math"
 	"net/http"
+	"strconv"
 	"strings"
 
 	"github.com/mrjones/oauth"
@@ -101,4 +103,25 @@ func (client *ETradeClient) requestAndUnmarshal(requestURL string, v interface{}
 		return
 	}
 	return string(body), err
+}
+
+func convertToIntDollar(v interface{}) (i IntDollar, err error) {
+	switch v := v.(type) {
+	default:
+		return i, fmt.Errorf("Unexpected type in response for Value %v", v)
+	case float32:
+		i = IntDollar(math.Floor((float64(v) * 100) + .5))
+	case string:
+		//This doesn't handle strings without a decimal correctly
+		//Need to unit test more
+		v = strings.Replace(v, ".", "", -1)
+		value, err := strconv.ParseInt(v, 10, 64)
+		if err != nil {
+			return i, err
+		}
+		i = IntDollar(value)
+	case float64:
+		i = IntDollar(math.Floor((v * 100) + .5))
+	}
+	return
 }
